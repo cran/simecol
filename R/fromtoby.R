@@ -1,7 +1,7 @@
 
 ## check for from-to-by structure of vector
 isfromtoby <- function(x) {
-  all(sort(names(x)) == c("by", "from","to"))
+  (sum(names(x) %in% c("from","to","by"))==3)
 }
 
 hasfromtoby <- function(x) {
