@@ -13,14 +13,15 @@
   a special version designed to work with \code{odeModel} objects.
 }
 \usage{
-  rk4(y, times, func, parms) 
+  rk4(y, times, func, parms, ...) 
   # rk4(y) 
 }
 \arguments{
-  \item{y}{the \code{odeModel} object to be solved.}
-  \item{times}{placeholder for compatibility with the odesolve package}
-  \item{func}{placeholder for compatibility with the odesolve package}
-  \item{parms}{placeholder for compatibility with the odesolve package}
+  \item{y}{The \code{odeModel} object to be solved.}
+  \item{times}{Placeholder for compatibility with the odesolve package}
+  \item{func}{Placeholder for compatibility with the odesolve package}
+  \item{parms}{Placeholder for compatibility with the odesolve package}
+  \item{...}{Additional parameters, reserved for extensions}
 }
 
 \value{A list of the model outputs (states \dots) for all timesteps.}
@@ -34,18 +35,21 @@
 }
 
 \seealso{
-  \code{\link{sim}}, \code{\link{parms}}
-  \code{lsoda}, \code{\link{iteration}},
-  original \code{rk4} from the \code{odesolve} package.
+  \code{\link{sim}},
+  \code{\link{parms}}
+  \code{\link[odesolve]{lsoda}},
+  \code{\link{euler}},
+  \code{\link{iteration}},
+  original \code{\link[odesolve]{rk4}} from the \code{odesolve} package.
 }
 
 \examples{
-  # ordinary usage
-  data(lv)
-  solver(lv) <- "rk4"
-  plot(sim(lv))
+    # ordinary usage
+    data(lv)
+    solver(lv) <- "rk4"
+    plot(sim(lv))
 
-  # alternative usage
-  rk4(lv)
+    # alternative usage
+    rk4(lv)
 }
 \keyword{misc}

@@ -1,7 +1,7 @@
 \name{approxTime}
 \alias{approxTime}
 \alias{approxTime1}
-\title{Linear interpolation with complete matrices or data frames}
+\title{Linear Interpolation with Complete Matrices or Data Frames}
 \description{
   Return a data frame, matrix or vector which linearly interpolates data
   from a given matrix or data frame.
@@ -27,25 +27,24 @@ approxTime1(x, xout, rule = 1)
   \code{x} containing data which interpolate the given data with respect
   to \code{xout}.
   \code{approxTime1} is a performance optimized special version with less options 
-                     than the original \code{approx} function. 
-                     It returns an interpolated vector.
+  than the original \code{approx} function. It returns an interpolated vector.
 }
 \details{
   The functions can be used for linear interpolation with a
   complete matrix or data frame. This can be used for example in the
   main function of an \code{odeModel}
-  to get input values at a specified time t. The version
+  to get input values at a specified time \code{xout}. The version
   \code{approxTime1} is less flexible (only one single value for xout and only linear
   interpolation) but has increased performance.
-  Both functions are faster when x is a matrix instead of a data
-  frame.}
+  Both functions are faster if x is a matrix instead of a data frame.
+}
 
 \seealso{
-  \code{approx}
+  \code{\link[stats]{approxfun}}
 }
 
 \examples{
-  inputs <-data.frame(time=1:10, y1=rnorm(10), y2=rnorm(10, mean=50))
-  input  <-approxTime(inputs, c(2.5,3), rule=2)
+    inputs <-data.frame(time = 1:10, y1 = rnorm(10), y2 = rnorm(10, mean = 50))
+    input  <-approxTime(inputs, c(2.5, 3), rule = 2)
 }
 \keyword{arith}

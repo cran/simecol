@@ -1,19 +1,44 @@
-0.3.10
+0.4-2
+
+o helper classes: listOrNULL and functionOrNULL
+o new slot initfunc, initialize method and 
+  complete rewrite of constructors
+o new print and show methods
+o general code cleanup and several bugfixes
+o documentation improvements
+
+
+0.4-1
+
+o general code cleanup
+o iteration is now a generic function
+o ... argument added to get-functions
+o argument "last" in out()
+
+0.3-14
+
+o euler method for numerical integration
+
+0.3-11 - 0.3-13
+
+several bugfixes and documentation improvements
+
+0.3-10
 
 o some bug fixes and error checking in the accessor functions
 
-0.3.9
+0.3-9
 
 o documentation improvements
 
-0.3.8
+0.3-8
 
 o made rk4 a generic. This required to include a copy of the 
   original rk4 from the odesolve package but this cosmetic issue
   will be fixed as soon as possible
 o improvements of documentation
 
-0.3.7
+0.3-7
 
 o renamed class rndwalkModel to rwalkModel
 o code cleanup and error checking
@@ -21,7 +46,7 @@ o changed implementation of 'selfrefer' and renamed to 'addtoenv'
 o documentation issues
 o bugfixes
 
-0.3.6
+0.3-6
 
 o version presented at useR-2006
 o slot 'equations' renamed to 'main'

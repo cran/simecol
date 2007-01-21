@@ -2,21 +2,21 @@
 \alias{sEdit}
 \title{Simple editing}
 \description{
-  Simple editing of vectors, lists of vectors and other
-  objects.
+  Simple Editing of Vectors, Lists of Vectors and Other
+  Objects.
 }
 \usage{
  sEdit(x, title="Please enter values:")
 }
 \arguments{
-  \item{x}{a named object that you want to edit.}
-  \item{title}{a title for the dialog box.}
+  \item{x}{A named object that you want to edit.}
+  \item{title}{A title for the dialog box.}
 }
 \value{
   An object with the same type like \code{x}.
 }
 \details{
-  If called with a vector or list of vectors and if \code{tcltk} is
+  If called with a vector or list of vectors and if \textbf{Tcl/Tk} is
   installed, a dialog box is shown in which data can be entered. If the
   \code{x} is not of type vector or list of vectors, a default
   editing method is called.

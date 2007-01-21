@@ -13,14 +13,14 @@
 
 
 \title{
-  Fix parms, init or times of simecol objects
+  Fix `parms', `init' or '`imes' Slot of `simecol' Objects
 }
 \description{
-    The functions invoke an editor dialog for parameters, initial
-    values or time steps of \code{simObj} objects and then assign the
-    new (edited) version of \code{x} in the user's workspace. A Tcl/Tk
-    version or spreadsheet editor is displayed when possible depending
-    on the structure of the respective slot.
+  The functions invoke an editor dialog for parameters, initial
+  values or time steps of \code{simObj} objects and then assign the
+  new (edited) version of \code{x} in the user's workspace. A \textbf{Tcl/Tk}
+  version or spreadsheet editor is displayed if possible depending
+  on the structure of the respective slot.
 }
 \usage{
   fixParms(x)
@@ -28,10 +28,12 @@
   fixInit(x)
 }
 \arguments{
-  \item{x}{a valid instance of the \code{simObj} class.}
+  \item{x}{A valid instance of the \code{simObj} class.}
 }
 \seealso{
-  \code{\link{sEdit}}, \code{\link{simObj}}, \code{\link{parms}}
+  \code{\link{sEdit}}, \code{\link{simObj}},
+  \code{\link{parms}}, \code{\link{times}}, \code{\link{init}},
+  \code{\link[utils]{fix}}
 }
 \examples{
   \dontrun{

@@ -3,26 +3,28 @@
 useDynLib(simecol, .registration = TRUE)
 
 importFrom(graphics, plot)
-# import(odesolve) # uncommented when odesolve eventually has NAMESPACE
+import(odesolve)
 
 exportClasses(simObj, odeModel, gridModel, rwalkModel)
+exportClasses(listOrNULL,functionOrNULL)
 
 exportMethods(sim, parms, "parms<-", init, "init<-", times, "times<-")
 exportMethods(inputs, "inputs<-", main, "main<-", equations, "equations<-")
 exportMethods(solver, "solver<-", out)
 
-exportMethods(plot, print)
+exportMethods(plot, print, show)
 exportMethods(fixInit, fixParms, fixTimes)
+exportMethods(initialize, initfunc, "initfunc<-")
 
 export(neighbours, neighbors, eightneighbours, eightneighbors, seedfill)
-export(approxTime, approxTime1)
-export(rk4, iteration)
+export(approxTime, approxTime1, fromtoby)
+export(rk4, euler, iteration)
 export(addtoenv, sEdit, peaks)
 
 ## not necessary because example models are stored as *data*
 # export(lv, lv3, conway, diffusion, upca) 
 
 ## generating functions
-export(odeModel, gridModel, rwalkModel)
+export(simObj, odeModel, gridModel, rwalkModel)
 
 

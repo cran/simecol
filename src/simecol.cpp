@@ -2,8 +2,10 @@
    Helper functions for the simecol package
    currently seedfill of bitmapped images,
    neighbour functions for cellular automata
-   Th. Petzoldt, petzoldt@rcs.urz.tu-dresden.de
-   seedfill implemented using the algorithm of
+   Th. Petzoldt
+
+   non-recursive seedfill implemented
+   using the algorithm of
    http://alumni.imsa.edu/~stendahl/comp/src/fill.c
 */
 

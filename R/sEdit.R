@@ -1,14 +1,11 @@
 ## package: simecol
 ## sEdit = simple Edit
 ## function for editing named vectors and simple lists
-## petzoldt@rcs.urz.tu-dresden.de
-## License: GPL 2.0 or above
-## 2006-06-21
 
-## ToDo
-##  handle long vectors/lists (with several pages)
-##  handle character vectors correctly
-##  error handling if wrong data are entered
+## Not all data types can be handled in the moment, e.g.:
+##  long vectors/lists (with several pages)
+##  character vectors correctly
+##  no error handling if wrong data are entered
 
 sEdit <- function(x, title="Please enter values:") {
     ## conversion functions
@@ -60,14 +57,11 @@ sEdit <- function(x, title="Please enter values:") {
                              command=function()tclvalue(done) <- 1)
       tkgrid(reset.but, submit.but)
       done <- tclVar(0)
-
       ## capture destroy event
       tkbind(tt, "<Destroy>", function()tclvalue(done) <- 2)
-    
       ## initialize with oiginal slot values
       reset()
-      tkwm.deiconify(tt) # raises the tk window
-
+      tkwm.deiconify(tt)        # raise the tk window
       tkwait.variable(done)
       if(tclvalue(done)=="2") stop("dialog cancelled")
       tkdestroy(tt)

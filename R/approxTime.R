@@ -1,3 +1,6 @@
+## special versions of approx:
+##  approxTime:  interpolation of complete rows of a matrix or data frame
+##  approxTime1: special case with one row only (slightly faster)
 
 approxTime <- function(x, xout, ...) {
   if (is.data.frame(x)) {x <- as.matrix(x); wasdf <- TRUE} else wasdf <- FALSE

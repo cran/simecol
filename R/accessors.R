@@ -1,28 +1,31 @@
+## accessor and replacement functions for simObj slots
 
-setGeneric("parms", function(obj) standardGeneric("parms"))
+setGeneric("parms", function(obj, ...) standardGeneric("parms"))
 setGeneric("parms<-", function(obj, value) standardGeneric("parms<-"))
 
-setGeneric("init", function(obj) standardGeneric("init"))
+setGeneric("init", function(obj, ...) standardGeneric("init"))
 setGeneric("init<-", function(obj, value) standardGeneric("init<-"))
 
-setGeneric("times", function(obj) standardGeneric("times"))
+setGeneric("times", function(obj, ...) standardGeneric("times"))
 setGeneric("times<-", function(obj, value) standardGeneric("times<-"))
 
-setGeneric("inputs", function(obj) standardGeneric("inputs"))
+setGeneric("inputs", function(obj, ...) standardGeneric("inputs"))
 setGeneric("inputs<-", function(obj, value) standardGeneric("inputs<-"))
 
-setGeneric("equations", function(obj) standardGeneric("equations"))
+setGeneric("equations", function(obj, ...) standardGeneric("equations"))
 setGeneric("equations<-", function(obj, value) standardGeneric("equations<-"))
 
-setGeneric("solver", function(obj) standardGeneric("solver"))
+setGeneric("solver", function(obj, ...) standardGeneric("solver"))
 setGeneric("solver<-", function(obj, value) standardGeneric("solver<-"))
 
-setGeneric("main", function(obj) standardGeneric("main"))
+setGeneric("main", function(obj, ...) standardGeneric("main"))
 setGeneric("main<-", function(obj, value) standardGeneric("main<-"))
 
+setGeneric("initfunc", function(obj, ...) standardGeneric("initfunc"))
+setGeneric("initfunc<-", function(obj, value) standardGeneric("initfunc<-"))
 
-setGeneric("out", function(obj) standardGeneric("out"))
-
+setGeneric("out", function(obj, ...) standardGeneric("out"))
+## the out slot is readonly
 
 setMethod("parms", "simObj",
   function(obj) {
@@ -57,7 +60,7 @@ setMethod("times<-", "simObj",
           if (nam %in% c("from", "to", "by")) {
             obj@times[nam] <- value[[i]]
           } else {
-            print(paste("WARNING: vector element ", nam , " ignored."))
+            print(paste("WARNING: vector element ", nam , " ignored"))
           }
         }
       } else {
@@ -65,7 +68,7 @@ setMethod("times<-", "simObj",
         if (is.null(names(value)) | isfromtoby(value)) {
           obj@times <- value
         } else {
-          print("WARNING: Ignored! Invalid (or incomplete) names in right hand side of assignement.")
+          print("WARNING: Ignored! Invalid (or incomplete) names in right hand side of assignment.")
         }
       }
       invisible(obj)
@@ -78,16 +81,14 @@ setMethod("init", "simObj",
     }
 )
 
-# Todo:
-#  - multiple dispatch instead of if ... else
 setMethod("init<-", "simObj",
     function(obj, value) {
       if (is.matrix(value) | is.data.frame(value)) {
-        obj@init <- value
+        init <- value
       } else {
         init <- obj@init
         if (sum(is.na(match(names(value), names(init)))) > 0) {
-          print("WARNING: additional names in right hand side of assignement")
+          print("WARNING: additional names in right hand side of assignment")
         }
         for (i in 1:length(value)) {
           init[names(value[i])] <- value[[i]]
@@ -126,7 +127,6 @@ setMethod("inputs<-", "simObj",
     }
 )
 
-
 setMethod("main", "simObj",
     function(obj) {obj@main}
 )
@@ -152,6 +152,16 @@ setMethod("equations<-", "simObj",
     }
 )
 
+setMethod("initfunc", "simObj",
+    function(obj) {obj@initfunc}
+)
+
+setMethod("initfunc<-", "simObj",
+    function(obj, value) {
+      obj@initfunc <- value
+      invisible(obj)
+    }
+)
 
 setMethod("solver", "simObj",
     function(obj) {obj@solver}
@@ -164,10 +174,28 @@ setMethod("solver<-", "simObj",
     }
 )
 
-
 setMethod("out", "simObj",
-    function(obj) {
-      obj@out
-    }
+  # returns a list
+  function(obj, last=FALSE) {
+    o <- obj@out
+    if (last) o[length(o)] else o
+  }
 )
+
+setMethod("out", "gridModel",
+  # if last==TRUE: returns a matrix (identical to init)
+  function(obj, last=FALSE) {
+    o <- obj@out
+    if (last) o[[length(o)]] else o
+  }
+)
+
+setMethod("out", "odeModel",
+  # if last==TRUE: returns a vector (similar to init, time as first value)
+  function(obj, last=FALSE) {
+    o <- obj@out
+    if (last) unlist(o[nrow(o), ]) else o
+  }
+)
+
 

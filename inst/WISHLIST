@@ -1,13 +1,8 @@
-o coordination with the odesolve maintainer to add namespace and make
-  rk4 and lsoda a generic function.
-o function "fromtoby" to handle different style of time steps
+o improved list handling in parms function
 o parameter optimization (model fitting)
-o handling of external inputs (requires modification of lsoda/rk4)
-o scenario control (e.g. load different presets)
-o better example for stochastic CA
-o package vignette
 o graphical representatiopn of models in the helpfiles???
 o dynamic size of internal C buffers for seedfill
 o improved dialog version to edit parameters (Tcl/Tk)
+
 
 

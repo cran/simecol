@@ -1,7 +1,8 @@
 #######################################################
 # Basic Functions for Rectangular Cellular Automata
+# Details: see documentation of package simecol
 # Author:
-#   Thomas Petzoldt <petzoldt@rcs.urz.tu-dresden.de>
+#   Thomas Petzoldt
 #    2001-11-21 ... 2006-06-21
 # License: GPL 2.0 or later
 # Purpose: primarily teaching                                    

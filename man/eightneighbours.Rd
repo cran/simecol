@@ -2,7 +2,7 @@
 \alias{eightneighbours}
 \alias{eightneighbors}
 
-\title{Count number of neighbours in a rectangular cellular grid.}
+\title{Count Number of Neighbours in a Rectangular Cellular Grid.}
 
 \description{This function returns the sum of the eight neibours of
   a cell within a matrix. It can be used to simulate simple cellular
@@ -13,7 +13,7 @@
   eightneighbors(x)
 }
 \arguments{
-  \item{x}{the cellular grid, which typically contains integer values
+  \item{x}{The cellular grid, which typically contains integer values
     of zero (dead cell) or one (living cell).}
 }
 
@@ -28,30 +28,30 @@
 }
 
 \examples{
-n<-80
-m<-80
-x<-rep(0, m*n)
-#x[round(runif(1500,1,m*n))] <- 1
-dim(x)<- c(n,m)
-x[40,20:60] <- 1
+    n<-80
+    m<-80
+    x<-rep(0, m*n)
+    #x[round(runif(1500,1,m*n))] <- 1
+    dim(x)<- c(n,m)
+    x[40,20:60] <- 1
 
-image(x, col=c("wheat","grey","red"))
-x2<-x
-for (i in 2:10){
-  nb <- eightneighbours(x)
+    image(x, col=c("wheat","grey","red"))
+    x2<-x
+    for (i in 2:10){
+      nb <- eightneighbours(x)
 
-  ## survive with 2 or 3 neighbours
-  xsurv <- ifelse(x > 0 & (nb == 2 | nb ==3), 1, 0)
+      ## survive with 2 or 3 neighbours
+      xsurv <- ifelse(x > 0 & (nb == 2 | nb ==3), 1, 0)
 
-  ## generate for empty cells with 3 neigbours
-  xgen <- ifelse(x == 0 & nb == 3, 1, 0)
+      ## generate for empty cells with 3 neigbours
+      xgen <- ifelse(x == 0 & nb == 3, 1, 0)
 
-  x  <- ((xgen + xsurv)>0)
-  x2 <- ifelse(x2>1, 1, x2)
-  x2 <- ifelse(x>0,2,x2)
+      x  <- ((xgen + xsurv)>0)
+      x2 <- ifelse(x2>1, 1, x2)
+      x2 <- ifelse(x>0,2,x2)
 
-  dim(x2) <-c(n,m)
-  image(x2, col=c("wheat","grey","red"), add=TRUE)
-}
+      dim(x2) <-c(n,m)
+      image(x2, col=c("wheat","grey","red"), add=TRUE)
+    }
 }
 \keyword{array}
