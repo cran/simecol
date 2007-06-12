@@ -7,7 +7,7 @@
 \description{
   Create and set an environment where functions within a non-nested named
   list of functions see each other. This function is normally used
-  within other functions, in particular solvers of the \pkg{simecol} package.
+  within other functions.
 }
 \usage{
 addtoenv(L, p=parent.frame())
@@ -19,8 +19,7 @@ addtoenv(L, p=parent.frame())
   to the parent frame.}
 }
 \details{
-  This function is normally called indirectly by `solver functions' and
-  from \code{initialize} functions (constructors) of \code{simObj}ects.
+  This function was formerly used by `solver functions' of \code{simecol}.
 }
 \value{
   The list of equations within a common environment.
@@ -29,14 +28,14 @@ addtoenv(L, p=parent.frame())
 \note{
   This is a very special function that uses environment manipulations.
   Its purpose is to `open' the access to interdependend functions within
-  a common list structure (function list). This enables the user to
-  avoid the explicit specification of the `function list' and the
-  necessity to pass this list explicitely to the other functions.
+  a common list structure (function list).
+  This function is no longer used in recent versions of \pkg{simecol} and
+  may be removed in future versions.
 }
 \seealso{
-  \code{\link{rk4}},
-  \code{\link{iteration}},
-  \code{\link{odeModel}}}
+  \code{\link{attach}},
+  \code{\link{environment}}
+}
 
 \examples{
     eq <- list(f1 = function(x, y)    x + y,

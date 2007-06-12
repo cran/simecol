@@ -54,8 +54,9 @@ setMethod("euler", "odeModel",
     func              <- y@main
     inputs            <- y@inputs
     equations         <- y@equations
-    equations         <- addtoenv(equations)
     environment(func) <- environment()
+    attach(equations)
+    on.exit(detach(equations))
     euler(y@init, times, func, y@parms)
   }
 )

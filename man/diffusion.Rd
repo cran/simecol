@@ -45,8 +45,8 @@ The object contains the following slots:
     data(diffusion)
     plot(sim(diffusion))
     # show "grid of environmental conditions"
-    inputs diffusion
-    # set conditions to "1", i.e. remove "refugium" in the middle
+    image(inputs(diffusion))
+    # set conditions to "1", i.e. remove "refuge" in the middle
     inputs(diffusion) <- matrix(1, 100, 100)
     plot(sim(diffusion))
   }

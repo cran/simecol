@@ -9,8 +9,10 @@ setMethod("rk4", "odeModel",
     func              <- y@main
     inputs            <- y@inputs
     equations         <- y@equations
-    equations         <- addtoenv(equations)
+    parms <- y@parms
     environment(func) <- environment()
-    rk4(y@init, times, func, y@parms)
+    attach(equations)
+    on.exit(detach(equations))
+    rk4(y@init, times, func, parms)
   }
 )

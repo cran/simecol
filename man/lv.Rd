@@ -49,7 +49,7 @@ Volterra, V. (1926). Variazionie fluttuazioni del numero d'individui in specie a
     print(lv)
     plot(sim(lv))
 
-    parms(lv) <- list(k1=0.5, k2=0.5, k3=0.5)
+    parms(lv) <- c(k1=0.5, k2=0.5, k3=0.5)
     plot(sim(lv))
 }
 

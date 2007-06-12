@@ -12,7 +12,7 @@ setMethod("sim", "odeModel",
   function(obj, ...) {
     times <- fromtoby(obj@times)
     if (obj@solver == "lsoda") {
-      out <- wraplsoda(obj, ...)  
+      out <- wraplsoda(obj, ...)
     } else {
       out <- do.call(obj@solver, list(obj, ...))
     }

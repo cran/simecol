@@ -10,8 +10,9 @@ wraplsoda <- function(obj, ...) {
   equations  <- obj@equations
   parms      <- obj@parms
   inputs     <- obj@inputs
-  equations  <- addtoenv(equations)
   environment(func) <- environment()
+  attach(equations)
+  on.exit(detach(equations))
   lsoda(init, times, func, parms, ...)
 }
 

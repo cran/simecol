@@ -18,8 +18,9 @@ setMethod("iteration", "simObj",
     parms             <- y@parms
     inputs            <- y@inputs
     equations         <- y@equations
-    equations         <- addtoenv(equations)
     environment(func) <- environment()
+    attach(equations)
+    on.exit(detach(equations))
     parms$DELTAT <- 0
     out <- list(func(times[1], init, parms))
     for (i in 2:length(times)) {
@@ -44,8 +45,9 @@ setMethod("iteration", "odeModel",
     parms             <- y@parms
     inputs            <- y@inputs
     equations         <- y@equations
-    equations         <- addtoenv(equations)
     environment(func) <- environment()
+    attach(equations)
+    on.exit(detach(equations))
     n   <- length(init)
     parms <- c(parms, DELTAT = 0)
     nm  <- c("time", if (!is.null(attr(init, "names")))

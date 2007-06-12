@@ -4,12 +4,13 @@ setMethod("plot", c("simObj", "missing"),
   function(x, y, ...) {
     warning("No default plot method available for this class.\n",
     "  Please write your own plot method\n",
-    "  or use standard routines with extracted oputput data.")
+    "  or extract output data and use standard routines.")
   }
 )
 
 setMethod("plot", c("odeModel", "missing"),
   function(x, y, ...) {
+  	if (is.null(x@out)) stop("Please simulate the model before plotting")
     oldpar <- par(no.readonly=TRUE)
     on.exit(par(oldpar))
   	out    <- as.data.frame(x@out)
@@ -29,25 +30,29 @@ setMethod("plot", c("odeModel", "missing"),
 
 setMethod("plot", c("gridModel", "missing"),
   function(x, y, index=1:length(x@out), delay=0, ...) {
+   	if (is.null(x@out)) stop("Please simulate the model before plotting")
     oldpar <- par(no.readonly=TRUE)
     on.exit(par(oldpar))
     for (i in index) {
       image(x@out[[i]], main=i, ...)
-      Sys.sleep(0.001*delay)
+      Sys.sleep(0.001 * delay)
     }
   }
 )
 
 setMethod("plot", c("rwalkModel", "missing"),
   function(x, y, index=1:length(x@out), delay=0, ...) {
+   	if (is.null(x@out)) stop("Please simulate the model before plotting")
     oldpar <- par(no.readonly=TRUE)
     on.exit(par(oldpar))
     for (i in index) {
-      graphics:::plot(x@out[[i]]$x, x@out[[i]]$y,
-                      xlim = x@parms$area[c(1,3)],
-                      ylim = x@parms$area[c(2,4)],
+      dat <- x@out[[i]]
+      if (is.matrix(dat)) dat <- as.data.frame(dat)
+      graphics:::plot(dat$x, dat$y,
+                      xlim = x@parms$area[c(1,2)],
+                      ylim = x@parms$area[c(3,4)],
                       xlab="x", ylab="y", main=i, ...)
-      Sys.sleep(0.001*delay)
+      Sys.sleep(0.001 * delay)
     }
   }
 )

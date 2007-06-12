@@ -1,7 +1,8 @@
 ########################################################################
-## Stochastic Cellular Automaton
+## Stochastic Cellular Automaton with Weighted Neighborhood Matrix
 ########################################################################
-require(simecol)
+
+library(simecol)
 CA <- gridModel(
     main = function(time, init, parms) {
       z <- init
@@ -50,10 +51,7 @@ CA <- gridModel(
     init = matrix(0, nrow=80, ncol=80),
     solver = "iteration",
     initfunc = function(obj) {
-      #print(init(obj))
-      #init <- init(obj)
       init(obj)[38:42,38:42] <- 5 # deterministic seed in the middle of the grid
-      #init(obj) <- init
       obj
   }
 )
@@ -66,14 +64,10 @@ mycolors <- function(n) {
   col
 }
 
-
 CA.save <- CA
-
 
 times(CA) <- c(to=100)
 CA <- sim(CA)         # takes some time
-
-# CA <- sim(CA, animate=TRUE)
 
 lastZ <- out(CA)[[50]]
 maxz  <- max(lastZ)
@@ -81,7 +75,6 @@ maxz  <- max(lastZ)
 plot(CA, delay=50, index=90, col=mycolors(maxz+1), axes=F)
 
 # image(out(CA)[[2]])
-
 # parms(CA) <- c(ps = 0.99)
 # parms(CA) <- c(pj = 0.99)
 # parms(CA) <- c(old= 20)

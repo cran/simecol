@@ -22,7 +22,7 @@
   (scientists and students) an interactive environment to implement,
   distribute, simulate and document ecological and other dynamic models without the
   need to write long simulation programs. For this purpose, an object
-  oriented approach using the S4 class system
+  oriented approach using the \textbf{S4} class system
   is proposed, which should provide a consistent but still
   flexible and extensible way to implement simulation models of different
   types, namely:
@@ -57,12 +57,11 @@
       is up to the user to evaluate the corresponding values within the
       \code{main} function. Performance optimized version of
       \code{approx} (see \code{\link{approxTime}}) are available.
-     \item \code{solver}: character string specifying the solver
+     \item \code{solver}: character string specifying the numerical algorithm
        used. Currently \code{"lsoda"} (from package \code{odesolve}),
        \code{"rk4"}, \code{"euler"} and \code{"iterator"} are supported.
-       It is possible to write own solvers. Please have a look at the
-       environment setting code at the beginning of \code{"rk4"} or
-       \code{"iterator"}.
+       It is possible to provide own algorithms (solvers). Please have a look at
+       the code at the beginning of \code{"rk4"} or \code{"iterator"}.
      \item \code{out}: this slot holds the simulation results after a
        simulation run as data frame or list (of matrices).
      \item \code{initfunc}: this slot can hold an optional function which is called
@@ -84,11 +83,13 @@
   sub-equations or initfunc or to extract the model outputs.
   It is also possible to modify the components of the simecol objects
   directly, e.g. the model equations of a model \code{\link{lv}} with
-  \code{lv@main}, but there is no guaranteed that this will work in a compatible
+  \code{lv@main}, but there is no guarantee that this will work in a compatible
   way in future versions.
 
-  Models of different type are provided as data and in source code
-  (see directory examples). The examples are intended as a starting point to
+  Models of different type are provided as data and some more in source code
+  (see directory examples). 
+
+  The examples are intended as a starting point to
   write your own \code{simObj} objects and to distribute them to whomever you wish.
 
   The package is supplemented with several utility functions
@@ -102,18 +103,24 @@ News\tab  file.show(system.file("NEWS", package = "simecol"))\cr
 Wish List\tab  file.show(system.file("WISHLIST", package = "simecol"))\cr
 Acknowledgements\tab  file.show(system.file("THANKS", package = "simecol"))\cr
 This File\tab  package?simecol\cr
-Help files as PDF\tab  u <- "http://hhbio.wasser.tu-dresden.de/projects/simecol/simecol.pdf"; browseURL(u)\cr
+Help files as PDF\tab  u <- "http://cran.r-project.org/doc/packages/simecol.pdf"; browseURL(u)\cr
 }
 
 }
 
-%\references{} 
+\references{
+  Petzoldt, T, K. Rinke (2007), \pkg{simecol}: An Object-Oriented Framework for
+    Ecological Modeling in \textbf{R}. Journal of Statistical Software,
+    submitted.
+}
+
 
 \author{
   Thomas Petzoldt \email{thomas.petzoldt@tu-dresden.de}
 }
 
 \examples{
+    ## -- binary examples -------------------------------
     data(lv)        # load basic Lotka-Volterra model
 
     \dontrun{fixParms(lv)}
@@ -127,6 +134,12 @@ Help files as PDF\tab  u <- "http://hhbio.wasser.tu-dresden.de/projects/simecol/
     init(conway) <- matrix(0, 10, 10)
     \dontrun{fixInit(conway)} # enter some "1"
     sim(conway, animate=TRUE, delay=10)
+    
+    ## -- sourcecode examples ----------------------------
+    ## open the directory with all sourcecode examples
+    \dontrun{
+    browseURL(paste(system.file(package="simecol"), "/examples", sep=""))
+    }
 }
 
 \keyword{misc}

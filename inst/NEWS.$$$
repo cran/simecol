@@ -5,7 +5,6 @@ o tcltk is now mandatory (in Depends), to solve issue
 o check for empty out-slot in plot methods
 o obsolete comments removed
 o small documentation updates
-  - addtoenv may be removed in the future
 o version 0.5 is used in the upcoming JSS article
 
 0.4-3

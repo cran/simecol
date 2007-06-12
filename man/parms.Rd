@@ -118,15 +118,12 @@
 
 \details{These are the accessing functions for \code{parms},
   \code{times} etc.
-  The \code{init}-method for class \code{odeModel} allows to change
-  single named values (in contrast to the
-  whole) of the target slot. Special care has to be taken to use valid
-  names.  In \code{init} the
-  applied names must correspond to the names and number (!) of state
-  variables but the restrictions of \code{parms} are less strict
-  (additional parameter values for ``future use'' are allowed). If
-  \code{NA} is assigned to a named element in \code{parms} or
-  \code{init} the respective element (name and value) is deleted.
+  Please take care of the semantics of your model when changing slots.
+  All, element names, data structure and values have to correspond to you
+  model object definition. For example in \code{init} the
+  applied names must exactly correspond to the names and number (!) of state
+  variables. The restrictions of \code{parms} or \code{equations} are less strict
+  (additional values for ``future use'' are allowed).
   The function \code{times} allows either to assign or to modify a special
   vector with three elements named \code{from}, \code{to} and \code{by} or to
   overwrite \code{times} with an un-named sequence (e.g.
@@ -144,18 +141,17 @@
 \examples{
     data(lv)
     parms(lv)
-    parms(lv) <- list(k2=0.5)
-    parms(lv) <- list(k2=0.5, k1=0.3)
-    parms(lv)
+    parms(lv)       <- c(k1=0.2, k2=0.5, k1=0.3)
+    parms(lv)["k2"] <- 0.5
 
     data(conway)
     parms(conway)
-    parms(conway) <- list(srv=c(2, 2))
+    parms(conway)$srv <- c(2, 2)
     parms(conway)
 
     # add a new named parameter value
-    parms(lv) <- c(dummy = 1)
-    # remove this value from the parameter vector
-    parms(lv) <- c(dummy = NA)
+    parms(lv)["dummy"] <- 1
+    # remove dummy parameter
+    parms(lv) <- parms(lv)[names(parms(lv)) != "dummy"]
 }
 \keyword{programming}

@@ -32,9 +32,3 @@ setMethod("show", "simObj",
   function(object) print(object)
 )
 
-#setMethod("print", "simObj",
-#    function(x, ...) {
-#      base:::print(x, ...)
-#    }
-#)
-

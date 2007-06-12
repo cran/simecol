@@ -15,8 +15,9 @@ setMethod("initialize", signature(.Object="simObj"),
       initfunc                <- .Object@initfunc
       environment(initfunc)   <- environment()
       equations               <- .Object@equations
-      equations               <- addtoenv(equations, environment())
       environment(main)       <- environment()
+      attach(equations)
+      on.exit(detach(equations))
       .Object                 <- initfunc(.Object)
     }
     invisible(.Object)

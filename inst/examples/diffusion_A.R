@@ -1,10 +1,14 @@
+########################################################################
+## Random walk model, see also diffusion_B which uses "initfunc"
+########################################################################
+
 diffusion <- new("rwalkModel",
   main = function(time, init, parms) {
     # inputs  <- obj@inputs
     speed   <- parms$speed
     xleft   <- parms$area[1]
-    ybottom <- parms$area[2]
-    xright  <- parms$area[3]
+    xright  <- parms$area[2]
+    ybottom <- parms$area[3]
     ytop    <- parms$area[4]
 
     x <- init$x  # x coordinate
@@ -32,15 +36,15 @@ diffusion <- new("rwalkModel",
     data.frame(x=x, y=y, a=a)
   },
   times  = c(from=0, to=100, by=1),
-  parms  = list(ninds=50, speed = 1, area = c(0, 0, 100, 100)),
+  parms  = list(ninds=50, speed = 1, area = c(0, 100, 0, 100)),
   solver = "iteration"
 )
 
 diffusionInit <- function(obj) {
   ninds   <- obj@parms$ninds
   xleft   <- obj@parms$area[1]
-  ybottom <- obj@parms$area[2]
-  xright  <- obj@parms$area[3]
+  xright  <- obj@parms$area[2]
+  ybottom <- obj@parms$area[3]
   ytop    <- obj@parms$area[4]
   data.frame(x = runif(ninds) * (xright - xleft) + xleft,
              y = runif(ninds) * (ytop - ybottom) + ybottom,

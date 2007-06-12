@@ -47,7 +47,7 @@
     plot(sim(lv))
 
     lv2 <- lv
-    parms(lv2) <- c(k1=0.5)
+    parms(lv2)["k1"] <- 0.5
     lv2 <- sim(lv2)
     plot(out(lv2))
 }

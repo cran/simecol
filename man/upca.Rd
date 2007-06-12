@@ -54,7 +54,7 @@ The object contains the following slots:
     plot(sim(upca))
 
     # omit stabilizing parameter wstar
-    parms(upca) <- list(wstar=0)
+    parms(upca)["wstar"] <- 0
     plot(sim(upca))
 
     # change functional response from

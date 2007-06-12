@@ -18,6 +18,7 @@ exportMethods(initialize, initfunc, "initfunc<-")
 
 export(neighbours, neighbors, eightneighbours, eightneighbors, seedfill)
 export(approxTime, approxTime1, fromtoby)
+#export(lsoda)
 export(rk4, euler, iteration)
 export(addtoenv, sEdit, peaks)
 

@@ -31,12 +31,12 @@
     n<-80
     m<-80
     x<-rep(0, m*n)
-    #x[round(runif(1500,1,m*n))] <- 1
-    dim(x)<- c(n,m)
-    x[40,20:60] <- 1
+    #x[round(runif(1500, 1, m*n))] <- 1
+    dim(x) <- c(n,m)
+    x[40, 20:60] <- 1
 
-    image(x, col=c("wheat","grey","red"))
-    x2<-x
+    image(x, col=c("wheat", "grey", "red"))
+    x2 <- x
     for (i in 2:10){
       nb <- eightneighbours(x)
 
@@ -48,10 +48,10 @@
 
       x  <- ((xgen + xsurv)>0)
       x2 <- ifelse(x2>1, 1, x2)
-      x2 <- ifelse(x>0,2,x2)
+      x2 <- ifelse(x>0, 2, x2)
 
       dim(x2) <-c(n,m)
-      image(x2, col=c("wheat","grey","red"), add=TRUE)
+      image(x2, col=c("wheat", "grey", "red"), add=TRUE)
     }
 }
 \keyword{array}

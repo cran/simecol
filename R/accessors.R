@@ -35,16 +35,9 @@ setMethod("parms", "simObj",
 
 setMethod("parms<-", "simObj", 
     function(obj, value) {
-      p <- obj@parms
-      for (i in 1:length(value)) {
-        ## ifelse(is.list ...) reserved for future extensions
-        p[names(value[i])] <- ifelse(is.list(p), value[i], value[[i]])
-      }
-      na <- is.na(p)
-      if (any(na)) p <- p[-which(na)]
-      obj@parms <- p
+      obj@parms <- value
       invisible(obj)
-  }
+    }
 )
 
 setMethod("times", "simObj",
@@ -60,7 +53,7 @@ setMethod("times<-", "simObj",
           if (nam %in% c("from", "to", "by")) {
             obj@times[nam] <- value[[i]]
           } else {
-            print(paste("WARNING: vector element ", nam , " ignored"))
+            print(paste("Warning: vector element ", nam , " ignored"))
           }
         }
       } else {
@@ -68,7 +61,7 @@ setMethod("times<-", "simObj",
         if (is.null(names(value)) | isfromtoby(value)) {
           obj@times <- value
         } else {
-          print("WARNING: Ignored! Invalid (or incomplete) names in right hand side of assignment.")
+          print("Warning: Ignored. Invalid (or incomplete) names in right hand side of assignment.")
         }
       }
       invisible(obj)
@@ -83,21 +76,7 @@ setMethod("init", "simObj",
 
 setMethod("init<-", "simObj",
     function(obj, value) {
-      if (is.matrix(value) | is.data.frame(value)) {
-        init <- value
-      } else {
-        init <- obj@init
-        if (sum(is.na(match(names(value), names(init)))) > 0) {
-          print("WARNING: additional names in right hand side of assignment")
-        }
-        for (i in 1:length(value)) {
-          init[names(value[i])] <- value[[i]]
-        }
-        # delete elements which are NA
-        na <- is.na(init)
-        if (any(na)) init <- init[-which(na)]
-      }
-      obj@init <- init
+      obj@init <- value
       invisible(obj)
     }
 )
@@ -144,10 +123,7 @@ setMethod("equations", "simObj",
 
 setMethod("equations<-", "simObj",
     function(obj, value) {
-      for (i in 1:length(value)) {
-        ## ifelse(is.list ...) reserved for future extensions
-        obj@equations[names(value[i])] <- ifelse(is.list(obj@equations), value[i], value[[i]])
-      }
+      obj@equations <- value
       invisible(obj)
     }
 )

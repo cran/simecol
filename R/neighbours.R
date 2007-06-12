@@ -1,12 +1,5 @@
-#######################################################
-# Basic Functions for Rectangular Cellular Automata
-# Details: see documentation of package simecol
-# Author:
-#   Thomas Petzoldt
-#    2001-11-21 ... 2006-06-21
-# License: GPL 2.0 or later
-# Purpose: primarily teaching                                    
-#######################################################
+## Basic Functions for Rectangular Cellular Automata
+## Details: see documentation of package simecol
 
 eightneighbours <- function(x){
   if (!is.matrix(x))    stop("x must be a matrix")
