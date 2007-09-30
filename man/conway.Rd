@@ -22,11 +22,8 @@ The object contains the following slots:
 } 
 }
 
-}
-
 \details{To see all details, please have a look into the implementation.
 }
-
 
 \references{
 Gardner, Martin (1970) The Fantastic Combinations of John Conway's 

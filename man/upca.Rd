@@ -13,22 +13,22 @@
 The object contains the following slots:
   \describe{
     \item{\code{main}}{The differential equations for predator
-      prey and resource with:}
-      \describe{
-        \item{\code{u}}{resource (e.g. grassland or phosphorus),}
-        \item{\code{v}}{producer (prey),}
-        \item{\code{w}}{consumer (predator).}
-      }
+    prey and resource with:}
+    \describe{
+      \item{\code{u}}{resource (e.g. grassland or phosphorus),}
+      \item{\code{v}}{producer (prey),}
+      \item{\code{w}}{consumer (predator).}
     }
-    \item{\code{equations}}{Two alternative (and switchable) equations
-      for the functional response.}
-    \item{\code{parms}}{Vector with the named parameters of the model,
-      see references for details.}
-    \item{\code{times}}{Simulation time and integration interval.}
-    \item{\code{init}}{Vector with start values for \code{u}, \code{v} and \code{w}.}
-    \item{\code{solver}}{Character string with the integration method.}
   }
+  \item{\code{equations}}{Two alternative (and switchable) equations
+    for the functional response.}
+  \item{\code{parms}}{Vector with the named parameters of the model,
+    see references for details.}
+  \item{\code{times}}{Simulation time and integration interval.}
+  \item{\code{init}}{Vector with start values for \code{u}, \code{v} and \code{w}.}
+  \item{\code{solver}}{Character string with the integration method.}
 }
+
 \details{
   To see all details, please have a look into the implementation and the
   original publications.
