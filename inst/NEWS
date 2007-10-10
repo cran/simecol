@@ -1,7 +1,14 @@
+0.5-3
+
+o added citation to JSS article about simecol
+o removed obsolete \non_function{} entry from documentation
+o conversion of simObj to and from lists, as.list and as.simObj
+o bivariate uniform random numbers (Plackett distribution)
+
 0.5-2
 
-o tcltk is now again suggested only
-  (R package check was fortunately relaxed)
+o tcltk is now Suggested again 
+  (possible due to relaxed package check conditions)
 
 0.5-1
 

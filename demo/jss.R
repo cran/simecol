@@ -8,7 +8,6 @@ defpar <- par(no.readonly = TRUE)
 
 library("simecol")
 pkgdir <- system.file(package="simecol")
-#pkgdir <- "c:/src/packages/simecol/inst"
 
 ###################################################
 ### First example

@@ -5,8 +5,9 @@
 ## helper classes
 setClassUnion("functionOrNULL", c("NULL", "function"))
 setClassUnion("listOrNULL", c("NULL", "list"))
+setClassUnion("numericOrlist", c("numeric", "list"))
 
-## main classes of Simecol
+## main classes of simecol
 setClass("simObj",
          representation(
            main = "function",
@@ -23,7 +24,7 @@ setClass("simObj",
 
 setClass("odeModel",
          representation(
-           parms  = "numeric",
+           parms  = "numericOrlist",
            init   = "numeric"
          ),
          contains = "simObj"

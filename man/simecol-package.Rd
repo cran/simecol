@@ -2,9 +2,6 @@
 \alias{simecol-package}
 \alias{simecol}
 \alias{simObj}
-%\alias{odeModel}
-%\alias{gridModel}
-%\alias{rwalkModel}
 
 \alias{simObj-class}
 \alias{odeModel-class}
@@ -14,8 +11,6 @@
 \docType{package}
 
 \title{General Information about the `simecol' Package}
-
-\non_function{}
 
 \description{
   The \pkg{simecol} package is intended to give users
@@ -109,9 +104,9 @@ Help files as PDF\tab  u <- "http://cran.r-project.org/doc/packages/simecol.pdf"
 }
 
 \references{
-  Petzoldt, T, K. Rinke (2007), \pkg{simecol}: An Object-Oriented Framework for
+  Petzoldt, T and K. Rinke (2007), \pkg{simecol}: An Object-Oriented Framework for
     Ecological Modeling in \textbf{R}. Journal of Statistical Software,
-    submitted.
+    22(9). URL \url{http://www.jstatsoft.org/v22/i09/}.
 }
 
 
@@ -120,26 +115,26 @@ Help files as PDF\tab  u <- "http://cran.r-project.org/doc/packages/simecol.pdf"
 }
 
 \examples{
-    ## -- binary examples -------------------------------
-    data(lv)        # load basic Lotka-Volterra model
+## -- binary examples -------------------------------
+data(lv)        # load basic Lotka-Volterra model
 
-    \dontrun{fixParms(lv)}
-    parms(lv)
-    main(lv)
-    lv <- sim(lv)
-    plot(lv)
-    results <- out(lv)
+\dontrun{fixParms(lv)}
+parms(lv)
+main(lv)
+lv <- sim(lv)
+plot(lv)
+results <- out(lv)
 
-    data(conway)    # Conway's game of life
-    init(conway) <- matrix(0, 10, 10)
-    \dontrun{fixInit(conway)} # enter some "1"
-    sim(conway, animate=TRUE, delay=10)
-    
-    ## -- sourcecode examples ----------------------------
-    ## open the directory with all sourcecode examples
-    \dontrun{
-    browseURL(paste(system.file(package="simecol"), "/examples", sep=""))
-    }
+data(conway)    # Conway's game of life
+init(conway) <- matrix(0, 10, 10)
+\dontrun{fixInit(conway)} # enter some "1"
+sim(conway, animate=TRUE, delay=10)
+
+## -- sourcecode examples ----------------------------
+## open the directory with all sourcecode examples
+\dontrun{
+browseURL(paste(system.file(package="simecol"), "/examples", sep=""))
+}
 }
 
 \keyword{misc}
