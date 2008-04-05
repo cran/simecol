@@ -11,13 +11,16 @@
 setMethod("initialize", signature(.Object="simObj"),
   function(.Object, ...) {
     .Object <- callNextMethod()
+    ## delete outputs from former simulations
+    .Object@out <- NULL
     if (is.function(.Object@initfunc)) {
       initfunc                <- .Object@initfunc
-      environment(initfunc)   <- environment()
       equations               <- .Object@equations
+      environment(initfunc)   <- environment()
       environment(main)       <- environment()
-      attach(equations)
-      on.exit(detach(equations))
+      #attach(equations)
+      #on.exit(detach(equations))
+      equations               <- addtoenv(equations)
       .Object                 <- initfunc(.Object)
     }
     invisible(.Object)

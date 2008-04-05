@@ -9,7 +9,7 @@ setMethod("euler", "numeric",
     if (!is.numeric(y))     stop("`y' must be numeric")
     if (!is.numeric(times)) stop("`times' must be numeric")
     if (!is.function(func)) stop("`func' must be a function")
-    if (!is.numeric(parms)) stop("`parms' must be numeric")
+    # if (!is.numeric(parms)) stop("`parms' must be numeric")
     n <- length(y)
     ## Call func once to figure out whether and how many "global"
     ## results it wants to return and some other safety checks
@@ -55,8 +55,9 @@ setMethod("euler", "odeModel",
     inputs            <- y@inputs
     equations         <- y@equations
     environment(func) <- environment()
-    attach(equations)
-    on.exit(detach(equations))
+    #attach(equations)
+    #on.exit(detach(equations))
+    equations               <- addtoenv(equations)
     euler(y@init, times, func, y@parms)
   }
 )

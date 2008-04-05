@@ -6,6 +6,7 @@
 setClassUnion("functionOrNULL", c("NULL", "function"))
 setClassUnion("listOrNULL", c("NULL", "list"))
 setClassUnion("numericOrlist", c("numeric", "list"))
+setClassUnion("listOrdata.frame", c("list", "data.frame"))
 
 ## main classes of simecol
 setClass("simObj",

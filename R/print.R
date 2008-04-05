@@ -5,7 +5,7 @@
 setMethod("print", "simObj",
     function(x, all=FALSE, ...) {
       if (all) {
-        base:::print(x, ...)
+        print.default(x, all=TRUE, ...)
       } else {
         cat("An object of class", class(x)[1],"\n")
         ## workaround to improve order for essential simecol slots
