@@ -1,3 +1,14 @@
+0.5-7
+
+o the package uses now deSolve instead of odesolve
+o euler is now imported from deSolve and removed from simecol
+o allow solver slot to contain not only character but also function
+o plain text version of JSS publication added as vignette
+
+0.5-6
+
+o small improvements and updates 
+
 0.5-5
 
 o reworked ODE solvers, rk4 and lsoda generics removed,
@@ -7,6 +18,7 @@ o reworked ODE solvers, rk4 and lsoda generics removed,
   ode solvers
 o rehabilitation of addtoenv()
 o documentation updates
+o replacement functions now delete slot "out"
 
 0.5-4
 

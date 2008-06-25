@@ -4,10 +4,10 @@ useDynLib(simecol, .registration = TRUE)
 
 importFrom(graphics, plot)
 
-import(odesolve)
+import(deSolve)
 
 exportClasses(simObj, odeModel, gridModel, rwalkModel)
-exportClasses(numericOrlist,listOrNULL,functionOrNULL,listOrdata.frame)
+exportClasses(numericOrlist,listOrNULL,functionOrNULL,listOrdata.frame,functionOrcharacter)
 
 exportMethods(sim, parms, "parms<-", init, "init<-", times, "times<-")
 exportMethods(inputs, "inputs<-", main, "main<-", equations, "equations<-")
@@ -27,8 +27,8 @@ export(simObj, odeModel, gridModel, rwalkModel)
 export(addtoenv, fromtoby)
 export(neighbours, neighbors, eightneighbours, eightneighbors, seedfill)
 export(approxTime, approxTime1, sEdit, peaks)
-export(euler, iteration)
-#export(rk4, lsoda)
+export(iteration)
+#export(euler, rk4, lsoda) # from deSolve
 
 ## parameter fitting
 export(ssqOdeModel, fitOdeModel)
