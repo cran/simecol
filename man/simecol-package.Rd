@@ -7,6 +7,7 @@
 \alias{odeModel-class}
 \alias{gridModel-class}
 \alias{rwalkModel-class}
+\alias{indbasedModel-class}
 
 \docType{package}
 
@@ -15,9 +16,9 @@
 \description{
   The \pkg{simecol} package is intended to give users
   (scientists and students) an interactive environment to implement,
-  distribute, simulate and document ecological and other dynamic models without the
-  need to write long simulation programs. For this purpose, an object
-  oriented approach using the \textbf{S4} class system
+  distribute, simulate and document ecological and other dynamic models without
+  the need to write long simulation programs. For this purpose, an object
+  oriented approach using the S4 class system
   is proposed, which should provide a consistent but still
   flexible and extensible way to implement simulation models of different
   types, namely:
@@ -25,8 +26,9 @@
     \item ordinary differential equation (ode) models (class \code{odeModel}),
     \item grid-oriented individual-based models (class \code{gridModel}), and
     \item particle diffusion-type models (class \code{rwalkModel}),
-    \item non-spatial individual-based models or other model types by deriving
-      a user specified subclass from \code{simObj}.
+    \item individual-based models (class \code{indbasedModel}),
+    \item other model types by deriving a user specified subclass from
+    \code{simObj}.
   }
   Each simulation model is implemented as S4 object (superclass \code{simObj})
   with the following slots:
@@ -36,7 +38,7 @@
     \item \code{equations}: an optional non-nested list holding arbitrary
       sub-equations (sub-models) of the
       model. Sub-equations can be interdependent and can be called
-      directly from within \code{main} or \code{initialize}.
+      directly from within \code{main} or \code{initfunc}.
     \item \code{parms}: a list (or vector for some classes) with 
       constant model parameters,
     \item  \code{times}: vector of time steps or vector with three
@@ -61,11 +63,21 @@
         models where main returns the new state (i.e for individual-based models).
         It is also possible to reference own algorithms (solvers) that are defined
         in the useer workspace or to assign solver functions directly.
+     \item \code{observer}: optional slot which determines the data stored
+       during the simulation. A user-provided \code{observer} function can also
+       be used to write logging information to the screen or to the hard-disk,
+       to perform run-time visualisation, or statistical analysis during the
+       simulation.\cr
+       Note that the \code{observer}-mechanism works only with
+       \code{\link{iteration}} solvers. It is generally not avalable for
+       \code{odeModel}s.
      \item \code{out}: this slot holds the simulation results after a
-       simulation run as data frame or list (of matrices).
+       simulation run as data frame (if the return value of \code{main} is a vector)
+       or as list (otherwise). The type of data stored in \code{out} can be
+       manipulated by providing a user-definded \code{observer} function.
      \item \code{initfunc}: this slot can hold an optional function which is called
        automatically when a new object is created by \code{new} or when it
-       is re-initialized by \code{initialize}.
+       is re-initialized by \code{initialize} or \code{sim}.
   }  
 
   \code{simObj} model objects should be defined and created using the
@@ -94,22 +106,13 @@
   The package is supplemented with several utility functions
   (e.g. \code{\link{seedfill}} or \code{\link{neighbours}}), which can
   be used independently from \code{simObj} objects.
-
-The following are sources of information on \code{simecol}:
-\tabular{ll}{
-Home page\tab u <- "http://www.simecol.de/"; browseURL(u)\cr
-News\tab  file.show(system.file("NEWS", package = "simecol"))\cr
-Wish List\tab  file.show(system.file("WISHLIST", package = "simecol"))\cr
-Acknowledgements\tab  file.show(system.file("THANKS", package = "simecol"))\cr
-This File\tab  package?simecol\cr
-Help files as PDF\tab  u <- "http://cran.r-project.org/doc/packages/simecol.pdf"; browseURL(u)\cr
 }
 
-}
+
 
 \references{
   Petzoldt, T and K. Rinke (2007), \pkg{simecol}: An Object-Oriented Framework for
-    Ecological Modeling in \textbf{R}. Journal of Statistical Software,
+    Ecological Modeling in \R. Journal of Statistical Software,
     22(9). URL \url{http://www.jstatsoft.org/v22/i09/}.
 }
 
@@ -118,8 +121,19 @@ Help files as PDF\tab  u <- "http://cran.r-project.org/doc/packages/simecol.pdf"
   Thomas Petzoldt \email{thomas.petzoldt@tu-dresden.de}
 }
 
+\seealso{
+  \code{\link{CA}},
+  \code{\link{chemostat}},
+  \code{\link{conway}},
+  \code{\link{diffusion}},
+  \code{\link{lv}},
+  \code{\link{lv3}},
+  \code{\link{upca}}.
+}
+
+
 \examples{
-## -- binary examples -------------------------------
+## (1) Quick Start Examples ====================================================
 data(lv)        # load basic Lotka-Volterra model
 
 \dontrun{fixParms(lv)}
@@ -129,16 +143,39 @@ lv <- sim(lv)
 plot(lv)
 results <- out(lv)
 
+\dontrun{
 data(conway)    # Conway's game of life
 init(conway) <- matrix(0, 10, 10)
-\dontrun{fixInit(conway)} # enter some "1"
-sim(conway, animate=TRUE, delay=10)
-
-## -- sourcecode examples ----------------------------
-## open the directory with all sourcecode examples
-\dontrun{
-browseURL(paste(system.file(package="simecol"), "/examples", sep=""))
+times(conway) <-  1:100
+fixInit(conway) # enter some "1"
+sim(conway, animate=TRUE, delay=100)
 }
+
+## (2) Additional Resources ====================================================
+\dontrun{
+## open the directory with source code of demo
+browseURL(paste(system.file(package="simecol"), "/demo", sep=""))
+
+## run demo
+demo(jss)
+
+## open the directory with R sourcecode examples
+browseURL(paste(system.file(package="simecol"), "/examples", sep=""))
+
+## show package vignette with introductory article
+vignette("simecol-introduction")
+edit(vignette("simecol-introduction"))
+
+## open the installation directory of simecol
+##   (NEWS, THANKS, FAQ, ToDo, WISHLIST, ...)
+browseURL(paste(system.file(package="simecol"), "/", sep=""))
+
+## Open Project Homepage
+browseURL("http://www.simecol.de")
+}
+
+## How to cite package simecol in publications
+citation("simecol")
 }
 
 \keyword{misc}

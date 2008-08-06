@@ -1,5 +1,10 @@
-2008-05-21
- - switch from odesolve to deSolve
- - remove euler (is now in deSolve)
- - r-initialize during sim if initfunc  exists
- 
+2008-09-11
+ - observer slot for more (all??) models?
+   (observer may not be useful for odeModels)
+ - check documentation of solver-slot
+ - demo/examples in simecolModels-package.Rd
+
+ - find a way to copy all examples automatically 
+   from /R to /examples
+
+ - additional package vignettes (long-term)
