@@ -1,5 +1,5 @@
 Package: simecol 
-Version: 0.6-2
+Version: 0.6-3
 Date: 2008-11-28
 Title: Simulation of ecological (and other) dynamic systems
 Author: Thomas Petzoldt
@@ -10,5 +10,5 @@ Maintainer: Thomas Petzoldt <thomas.petzoldt@tu-dresden.de>
 Description: Object oriented framework to simulate ecological (and other) dynamic systems
 License: GPL (>= 2)  
 URL: http://www.simecol.de/
-Revision: 107
-Packaged: Mon Jan 19 05:41:48 2009; rforge
+Revision: 108
+Packaged: Fri Jan 23 05:36:01 2009; rforge
