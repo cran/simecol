@@ -1,6 +1,16 @@
+0.6-2
+
+o fitOdeModel supports now PORT algorithm (nlminb)
+o documentation improvements
+o first version of "simecol-howto"
+o new utility mixNamedVec
+
+
 0.6-1
 
 o start writing new vignette "simecol-howto"
+o data frame conversion for outputs of class odeModel now only for matrices and
+in out, not in sim.
 
 0.6
 

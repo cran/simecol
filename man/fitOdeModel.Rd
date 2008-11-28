@@ -1,6 +1,6 @@
 \name{fitOdeModel}
 \alias{fitOdeModel}
-\title{Parameter fitting for odeModel objects}
+\title{Parameter Fitting for odeModel Objects}
 \description{
   Fit parameters of \code{odeModel} objects to measured data.
 }
@@ -8,52 +8,96 @@
 fitOdeModel(simObj, whichpar = names(parms(simObj)), obstime, yobs, 
   sd.yobs = as.numeric(lapply(yobs, sd)), initialize = TRUE, 
   debuglevel = 0, fn = ssqOdeModel, 
-  method = c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN"), 
-  lower = -Inf, 
-  upper = Inf, 
+  method = c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN", "PORT"),
+  lower = -Inf, upper = Inf, scale.par = 1,
   control = list(), ...)
 }
 
 \arguments{
-  \item{simObj}{a valid object of class \code{\link{odeModel}}}
-  \item{whichpar}{character vector with names of parameters which are to be 
-  optimized (subset of parameter names of the \code{simObj}.}
-  \item{obstime}{vector with time steps for which observational data are available}
-  \item{yobs}{data frame with observational data for all or a subset of 
-    state variables. Their names must correspond exacly with existing names of state 
-    variables in the \code{\link{odeModel}}.}
-  \item{sd.yobs}{vector of given standard deviations for all observational
-    variables given in \code{yobs}. If no standard deviations are given,
-    these are estimated from \code{yobs}.}
-  \item{initialize}{optional boolean value whether the simObj should be 
-    re-initialized after the assignment of new parameter values. This can be
-    necessary in certain models to assign consistent values to initial state 
-    variables if they depend on parameters.}
-  \item{debuglevel}{a positive number that specifies the amount of debugging 
-    information printed}
-  \item{fn}{objective function, i.e. function that returns
-    the quality criterium that is minimized, defaults to \code{\link{ssqOdeModel}}.}
-  \item{method}{optimization method, see \code{\link[stats]{optim}}}
-  \item{lower, upper}{Bounds of the parameters for method L-BFGS-B, see 
-    \code{\link[stats]{optim}}. The bounds are also respected by other optimizers
+  
+  \item{simObj}{a valid object of class \code{\link{odeModel}},}
+
+  \item{whichpar}{character vector with names of parameters which are to
+    be optimized (subset of parameter names of the \code{simObj}),}
+
+  \item{obstime}{vector with time steps for which observational data are
+    available,}
+
+  \item{yobs}{data frame with observational data for all or a subset of
+    state variables. Their names must correspond exacly with existing
+    names of state variables in the \code{\link{odeModel}},}
+
+  \item{sd.yobs}{vector of given standard deviations (or scale) for all
+    observational variables given in \code{yobs}.  If no standard
+    deviations (resp. scales) are given, these are estimated from
+    \code{yobs},}
+
+  \item{initialize}{optional boolean value whether the simObj should be
+    re-initialized after the assignment of new parameter values. This
+    can be necessary in certain models to assign consistent values to
+    initial state variables if they depend on parameters.}
+
+  \item{debuglevel}{a positive number that specifies the amount of
+    debugging information printed,}
+
+  \item{fn}{objective function, i.e. function that returns the quality
+    criterium that is minimized, defaults to \code{\link{ssqOdeModel}},}
+
+  \item{method}{optimization method, see \code{\link[stats]{nlminb}} for
+    the PORT algorithm and \code{\link[stats]{optim}} for all other
+    methods,}
+
+  \item{lower, upper}{bounds of the parameters for method L-BFGS-B, see
+    \code{\link[stats]{optim}} and for method PORT see \code{\link[stats]{nlminb}}.
+    The bounds are also respected by other optimizers
     by means of an internal transformation of the parameter space (see 
     \code{\link{p.constrain}}). In this case, \emph{named vectors} are required.}
-  \item{control}{A list of control parameters for \code{\link[stats]{optim}}}
+
+  \item{scale.par}{scaling of parameters for method PORT see
+    \code{\link[stats]{nlminb}}.  In many cases, automatic scaling
+    (\code{scale.par = 1}) does well, but sometimes (e.g. if parameter
+    ranges differ several orders of magnitude) manual adjustment is
+    required. Often you get a reasonable choice if you set
+    \code{scale.par = 1/upper}.  The parameter is ignored by all other
+    methods. For \code{"Nelder-Mead"}, \code{"BFGS"}, \code{"CG"} and
+    \code{"SANN"} parameter scaling occurs as a side effect of parameter
+    transformation with \code{p.constrain}.}
+
+  \item{control}{a list of control parameters for
+    \code{\link[stats]{optim}} resp.  \code{\link[stats]{nlminb}},}
+  
   \item{\dots}{additional parameters passed to the solver method
-    (e.g. \code{\link[deSolve]{lsoda}})}
+    (e.g. to \code{\link[deSolve]{lsoda}}).}
+  
 }
 \details{
-  This function works currently only with \code{odeModel} objects where 
+  This function works currently only with \code{odeModel} objects where
   \code{parms} is a vector, not a list.
+
+  Note also that the control parameters of the PORT algorithm are
+  different from the control parameters of the other optimizers.
 }
 \value{
-  A list with the optimized parameters and other information, 
-  see \code{\link{optim}} for details.
+  A list with the optimized parameters and other information, see
+  \code{\link[stats]{optim}} resp. \code{\link[stats]{nlminb}} for
+  details.
+}
+\references{
+ Gay, D. M. (1990) Usage Summary for Selected Optimization Routines.
+ Computing Science Technical Report No. 153. AT&T Bell Laboratories,
+ Murray Hill, NJ.  \url{http://netlib.bell-labs.com/cm/cs/cstr/153.pdf}
+}
+\note{
+  The interface to the PORT algorithm will change for future \R versions.
 }
 \seealso{\code{\link{ssqOdeModel}}, \code{\link[stats]{optim}}}
 \examples{
+library(simecol)
+
 ## ======== load example model =========
 data(chemostat)
+
+#source("chemostat.R")
 
 ## derive scenarios
 cs1 <- cs2 <- chemostat
@@ -84,6 +128,7 @@ res <- fitOdeModel(cs2, whichpar=whichpar, obstime, yobs,
   debuglevel=0,
   control=list(trace=TRUE))
 
+res$par
 ## assign fitted parameters to the model, i.e. as start values for next step
 parms(cs2)[whichpar] <- res$par
 
@@ -94,6 +139,8 @@ res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
   control=list(trace=TRUE),
   atol=1e-4, rtol=1e-4)
 
+res$par
+
 ## alternative 2, transform parameters to constrain unconstrained method
 ## Note: lower and upper are *named* vectors
 res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
@@ -101,6 +148,35 @@ res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
   method = "BFGS", lower = c(vm=0, km=0), upper=c(vm=4, km=20),
   control=list(trace=TRUE),
   atol=1e-4, rtol=1e-4)
+
+res$par
+
+
+## alternative 3a, use PORT algorithm
+## Note: lower and upper are *named* vectors
+parms(cs2)[whichpar] <- c(vm=1, km=2)
+
+lower <- c(vm=0, km=0)
+upper <- c(vm=4, km=20)
+
+res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
+  debuglevel=0, fn = ssqOdeModel,
+  method = "PORT", lower = lower, upper = upper,
+  control=list(trace=TRUE),
+  atol=1e-4, rtol=1e-4)
+
+res$par
+
+## alternative 3b, PORT algorithm with manual parameter scaling
+## Note: lower and upper are *named* vectors
+
+res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
+  debuglevel=0, fn = ssqOdeModel,
+  method = "PORT", lower = lower, upper = upper, scale.par = 1/upper,
+  control=list(trace=TRUE),
+  atol=1e-4, rtol=1e-4)
+
+res$par
 
 ## set model parameters to  fitted values and simulate again
 parms(cs2)[whichpar] <- res$par
