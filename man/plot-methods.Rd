@@ -13,12 +13,16 @@
 }
 
 \usage{
-  \S4method{plot}{simObj,missing}(x, index=1:length(x@out), delay=0, \dots)
+  \S4method{plot}{simObj,missing}(x, y, \dots)
+  \S4method{plot}{odeModel,missing}(x, y, \dots)
+  \S4method{plot}{gridModel,missing}(x, y, index=1:length(x@out), delay=0, \dots)
+  \S4method{plot}{rwalkModel,missing}(x, y, index=1:length(x@out), delay=0, \dots)
+
 }
 
 \arguments{
   \item{x}{an object of class \code{simObj},}
-%  \item{y}{omitted.}
+  \item{y}{ignored,}
   \item{index}{index of time steps to be plotted,}
   \item{delay}{delay (in ms) between consecutive images (for
     \code{gridModel}s) or xy-plots (for \code{rwalkModel}s),
@@ -32,8 +36,8 @@
     \item{x = "ANY", y = "ANY"}{Generic function: see
       \code{\link[graphics]{plot}}.  }
 
-    \item{x = "simObj", \dots}{returns a warning that a specific method is
-      required, depending on the actual data structure.}
+    \item{x = "simObj", \dots}{template function, does nothing and
+      only issues a warning.}
 
     \item{x = "odeModel", \dots}{plots time series of the state
       variables. Optional plotting parameters are possible.}
