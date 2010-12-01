@@ -1,3 +1,8 @@
+0.7
+o "inputs" is now passed explicitly to sim "odeModel"
+o fix namespace issue
+
+
 0.6-11
 o fixed NOTE about missing depends on lattice in one of the examples
 
