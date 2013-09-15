@@ -1,3 +1,10 @@
+0.8-4
+o addtoenv for parameters 
+  (experimental and only for class indbasedModel)
+
+0.8-3
+o double buffering for animation plots
+
 0.8-2
 o removed obsolete files in installation
 o moved vignette source files to /vignettes
