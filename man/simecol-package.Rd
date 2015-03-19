@@ -147,6 +147,7 @@
 data(lv)        # load basic Lotka-Volterra model
 
 \dontrun{
+require("tcltk")
 fixParms(lv)
 }
 parms(lv)

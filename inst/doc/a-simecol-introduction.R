@@ -102,8 +102,9 @@ sapply(o2[c("predator", "prey")], range)
 ### code chunk number 12: lv_spectrum
 ###################################################
 tlv <- times(lv1)
-ots        <- ts(o1[c("predator", "prey")], start=tlv["from"], end=tlv["to"], deltat=tlv["by"])
-sp         <- spectrum(ots, spans=c(3,3), log="no")
+ots <- ts(o1[c("predator", "prey")], start=tlv["from"],
+          end=tlv["to"], deltat=tlv["by"])
+sp  <- spectrum(ots, spans=c(3,3), log="no")
 1/sp$freq[sp$spec[,1] == max(sp$spec[,1])]
 
 
@@ -143,7 +144,7 @@ lines(inp$time, inp$s.in, col="darkgreen", lwd=2, lty="11")
 
 
 ###################################################
-### code chunk number 16: a-simecol-introduction.Rnw:816-817
+### code chunk number 16: a-simecol-introduction.Rnw:818-819
 ###################################################
 options("prompt" = " ", "continue" = " ")
 
@@ -171,7 +172,7 @@ matplot(tt, o, xlab="Time", ylab="Prey", las=1, type="l")
 
 
 ###################################################
-### code chunk number 18: a-simecol-introduction.Rnw:841-842
+### code chunk number 18: a-simecol-introduction.Rnw:843-844
 ###################################################
 options("prompt" = "R> ", "continue" = "+ ")
 
