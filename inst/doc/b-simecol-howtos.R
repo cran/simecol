@@ -253,7 +253,7 @@ getMethod("sim", "odeModel")
 
 
 ###################################################
-### code chunk number 23: b-simecol-howtos.Rnw:623-629
+### code chunk number 23: b-simecol-howtos.Rnw:624-630
 ###################################################
 data(chemostat)
 solver(chemostat) # shows which solver we have
@@ -264,13 +264,13 @@ solver(chemostat) <- function(y, times, func, parms, ...) {
 
 
 ###################################################
-### code chunk number 24: b-simecol-howtos.Rnw:634-635
+### code chunk number 24: b-simecol-howtos.Rnw:635-636
 ###################################################
 cs1 <- cs2 <- chemostat
 
 
 ###################################################
-### code chunk number 25: b-simecol-howtos.Rnw:641-646
+### code chunk number 25: b-simecol-howtos.Rnw:642-647
 ###################################################
 obstime <- seq(0, 20, 2)
 yobs <- data.frame(
@@ -280,19 +280,19 @@ yobs <- data.frame(
 
 
 ###################################################
-### code chunk number 26: b-simecol-howtos.Rnw:668-669
+### code chunk number 26: b-simecol-howtos.Rnw:670-671
 ###################################################
 times(cs1)  <- obstime
 
 
 ###################################################
-### code chunk number 27: b-simecol-howtos.Rnw:675-676 (eval = FALSE)
+### code chunk number 27: b-simecol-howtos.Rnw:677-678 (eval = FALSE)
 ###################################################
 ## res <- fitOdeModel(cs1, obstime = obstime, yobs=yobs)
 
 
 ###################################################
-### code chunk number 28: b-simecol-howtos.Rnw:700-709
+### code chunk number 28: b-simecol-howtos.Rnw:702-711
 ###################################################
 whichpar <- c("vm", "km", "Y")
 lower    <- c(vm=0, km=0, Y=0)
@@ -306,19 +306,19 @@ res <- fitOdeModel(cs1, whichpar = whichpar,
 
 
 ###################################################
-### code chunk number 29: b-simecol-howtos.Rnw:716-717
+### code chunk number 29: b-simecol-howtos.Rnw:718-719
 ###################################################
 res
 
 
 ###################################################
-### code chunk number 30: b-simecol-howtos.Rnw:727-728
+### code chunk number 30: b-simecol-howtos.Rnw:729-730
 ###################################################
 parms(cs2)[whichpar] <- res$par
 
 
 ###################################################
-### code chunk number 31: b-simecol-howtos.Rnw:733-737
+### code chunk number 31: b-simecol-howtos.Rnw:735-739
 ###################################################
 times(cs2) <- obstime
 ysim <- out(sim(cs2))
@@ -342,14 +342,14 @@ plotFit()
 
 
 ###################################################
-### code chunk number 33: b-simecol-howtos.Rnw:777-779
+### code chunk number 33: b-simecol-howtos.Rnw:779-781
 ###################################################
 parms(cs1) <- c(parms(cs1), init(cs1))
 parms(cs1)
 
 
 ###################################################
-### code chunk number 34: b-simecol-howtos.Rnw:791-795
+### code chunk number 34: b-simecol-howtos.Rnw:793-797
 ###################################################
 initfunc(cs1) <- function(obj) {
   init(obj) <- parms(obj)[c("X", "S")]
@@ -358,7 +358,7 @@ initfunc(cs1) <- function(obj) {
 
 
 ###################################################
-### code chunk number 35: b-simecol-howtos.Rnw:802-811
+### code chunk number 35: b-simecol-howtos.Rnw:804-813
 ###################################################
 whichpar <- c("vm", "km", "X", "S")
 lower    <- c(vm=0, km=0, X=0, S=0)
@@ -393,7 +393,7 @@ res$par
 
 
 ###################################################
-### code chunk number 38: b-simecol-howtos.Rnw:878-884
+### code chunk number 38: b-simecol-howtos.Rnw:880-886
 ###################################################
 res <- fitOdeModel(cs1, whichpar = whichpar,
   obstime = obstime, yobs = yobs, method = "Nelder",
@@ -404,7 +404,7 @@ res$par
 
 
 ###################################################
-### code chunk number 39: b-simecol-howtos.Rnw:909-918
+### code chunk number 39: b-simecol-howtos.Rnw:911-920
 ###################################################
 weights <- data.frame(X = rep(1, nrow(yobs)),
                       S = rep(1, nrow(yobs)))
@@ -418,7 +418,7 @@ res$par
 
 
 ###################################################
-### code chunk number 40: b-simecol-howtos.Rnw:938-944
+### code chunk number 40: b-simecol-howtos.Rnw:940-946
 ###################################################
 res <- fitOdeModel(cs1, whichpar = whichpar,
   obstime = obstime, yobs = yobs, method = "PORT",
@@ -429,7 +429,7 @@ res$par
 
 
 ###################################################
-### code chunk number 42: b-simecol-howtos.Rnw:991-1015
+### code chunk number 42: b-simecol-howtos.Rnw:993-1017
 ###################################################
 library(FME)
 library(simecol)
@@ -458,7 +458,7 @@ Fit <- modFit(p = c(vm=10, km=10), f = Cost, simObj=cs1,
 
 
 ###################################################
-### code chunk number 43: b-simecol-howtos.Rnw:1024-1027
+### code chunk number 43: b-simecol-howtos.Rnw:1026-1029
 ###################################################
 summary(Fit)
 deviance(Fit)
@@ -466,7 +466,7 @@ coef(Fit)
 
 
 ###################################################
-### code chunk number 44: b-simecol-howtos.Rnw:1032-1035 (eval = FALSE)
+### code chunk number 44: b-simecol-howtos.Rnw:1034-1037 (eval = FALSE)
 ###################################################
 ## residuals(Fit)
 ## df.residual(Fit)

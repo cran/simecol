@@ -8,7 +8,8 @@
 fitOdeModel(simObj, whichpar = names(parms(simObj)), obstime, yobs, 
   sd.yobs = as.numeric(lapply(yobs, sd)), initialize = TRUE, 
   weights = NULL, debuglevel = 0, fn = ssqOdeModel, 
-  method = c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN", "PORT"),
+  method = c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN", "PORT",
+   "newuoa", "bobyqa"),
   lower = -Inf, upper = Inf, scale.par = 1,
   control = list(), ...)
 }
@@ -48,11 +49,13 @@ fitOdeModel(simObj, whichpar = names(parms(simObj)), obstime, yobs,
     criterium that is minimized, defaults to \code{\link{ssqOdeModel}},}
 
   \item{method}{optimization method, see \code{\link[stats]{nlminb}} for
-    the PORT algorithm and \code{\link[stats]{optim}} for all other
-    methods,}
+    the PORT algorithm, \code{\link[minqa]{newuoa}} resp.
+    \code{\link[minqa]{bobyqa}}  for the newuoa and bobyqa
+    algorithms, and \code{\link[stats]{optim}} for all other  methods,}
 
   \item{lower, upper}{bounds of the parameters for method L-BFGS-B, see
-    \code{\link[stats]{optim}} and for method PORT see \code{\link[stats]{nlminb}}.
+    \code{\link[stats]{optim}}, PORT see \code{\link[stats]{nlminb}}
+    and bobyqa \code{\link[minqa]{bobyqa}}.
     The bounds are also respected by other optimizers
     by means of an internal transformation of the parameter space (see 
     \code{\link{p.constrain}}). In this case, \emph{named vectors} are required.}
@@ -89,14 +92,17 @@ fitOdeModel(simObj, whichpar = names(parms(simObj)), obstime, yobs,
 \references{
  Gay, D. M. (1990) Usage Summary for Selected Optimization Routines.
  Computing Science Technical Report No. 153. AT&T Bell Laboratories,
- Murray Hill, NJ.  \url{http://netlib.bell-labs.com/cm/cs/cstr/153.pdf}
-}
-\note{
-  The interface to the PORT algorithm will change for future \R versions.
+ Murray Hill, NJ.
+
+ Powell, M. J. D. (2009). The BOBYQA algorithm for bound constrained
+ optimization without derivatives. Report No. DAMTP 2009/NA06, Centre
+ for Mathematical Sciences, University of Cambridge, UK.
+ \url{http://www.damtp.cam.ac.uk/user/na/NA_papers/NA2009_06.pdf}
 }
 \seealso{
 
-  \code{\link{ssqOdeModel}}, \code{\link{optim}}
+  \code{\link{ssqOdeModel}}, \code{\link{optim}}, \code{\link[stats]{nlminb}},
+    \code{\link[minqa]{bobyqa}}
 
   Note also that package \pkg{FME} function
   \code{\link[FME:modFit]{modFit}} has even more flexible means to fit
@@ -140,9 +146,10 @@ res <- fitOdeModel(cs2, whichpar=whichpar, obstime, yobs,
   debuglevel=0,
   control=list(trace=TRUE))
 
-res$par
+coef(res)
+
 ## assign fitted parameters to the model, i.e. as start values for next step
-parms(cs2)[whichpar] <- res$par
+parms(cs2)[whichpar] <- coef(res)
 
 ## alternatively, L-BFGS-B (allows lower and upper bounds for parameters)
 res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
@@ -151,7 +158,7 @@ res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
   control=list(trace=TRUE),
   atol=1e-4, rtol=1e-4)
 
-res$par
+coef(res)
 
 ## alternative 2, transform parameters to constrain unconstrained method
 ## Note: lower and upper are *named* vectors
@@ -161,11 +168,10 @@ res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
   control=list(trace=TRUE),
   atol=1e-4, rtol=1e-4)
 
-res$par
+coef(res)
 
 
 ## alternative 3a, use PORT algorithm
-## Note: lower and upper are *named* vectors
 parms(cs2)[whichpar] <- c(vm=1, km=2)
 
 lower <- c(vm=0, km=0)
@@ -177,21 +183,19 @@ res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
   control=list(trace=TRUE),
   atol=1e-4, rtol=1e-4)
 
-res$par
+coef(res)
 
 ## alternative 3b, PORT algorithm with manual parameter scaling
-## Note: lower and upper are *named* vectors
-
 res <- fitOdeModel(cs2, whichpar=c("vm", "km"), obstime, yobs,
   debuglevel=0, fn = ssqOdeModel,
   method = "PORT", lower = lower, upper = upper, scale.par = 1/upper,
   control=list(trace=TRUE),
   atol=1e-4, rtol=1e-4)
 
-res$par
+coef(res)
 
 ## set model parameters to  fitted values and simulate again
-parms(cs2)[whichpar] <- res$par
+parms(cs2)[whichpar] <- coef(res)
 times(cs2) <- c(from=0, to=20, by=1)
 ysim <- out(sim(cs2))
 
