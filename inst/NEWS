@@ -1,3 +1,11 @@
+0.8-9
+o register native routines
+o "fix..."-methods removed to fulfil CRAN policy, footnote in vignette
+
+0.8-8
+o correct omegahat web link
+o replace "fix..." . methods with workspace independent "edit"-methods
+
 0.8-7
 o enable newuoa and bobyqa optimizers from package minqa
 o small updates to help files and vignette

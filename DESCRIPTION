@@ -1,6 +1,6 @@
 Package: simecol
-Version: 0.8-7
-Date: 2015-09-03
+Version: 0.8-9
+Date: 2017-07-11
 Title: Simulation of Ecological (and Other) Dynamic Systems
 Author: Thomas Petzoldt
 Depends: R (>= 2.14), deSolve, methods
@@ -15,10 +15,7 @@ Description: An object oriented framework to simulate
   and paste) and aims to improve readability and usability of code.
 License: GPL (>= 2)
 URL: http://www.simecol.de/
-Repository: CRAN
-Repository/R-Forge/Project: simecol
-Repository/R-Forge/Revision: 255
-Repository/R-Forge/DateTimeStamp: 2015-09-03 06:48:45
-Date/Publication: 2015-09-03 13:26:50
 NeedsCompilation: yes
-Packaged: 2015-09-03 07:06:58 UTC; rforge
+Packaged: 2017-06-12 19:37:57 UTC; thpe
+Repository: CRAN
+Date/Publication: 2017-06-12 20:27:11 UTC
