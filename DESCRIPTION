@@ -1,6 +1,6 @@
 Package: simecol
-Version: 0.8-9
-Date: 2017-07-11
+Version: 0.8-10
+Date: 2017-10-22
 Title: Simulation of Ecological (and Other) Dynamic Systems
 Author: Thomas Petzoldt
 Depends: R (>= 2.14), deSolve, methods
@@ -16,6 +16,6 @@ Description: An object oriented framework to simulate
 License: GPL (>= 2)
 URL: http://www.simecol.de/
 NeedsCompilation: yes
-Packaged: 2017-06-12 19:37:57 UTC; thpe
+Packaged: 2017-10-22 17:20:19 UTC; thpe
 Repository: CRAN
-Date/Publication: 2017-06-12 20:27:11 UTC
+Date/Publication: 2017-10-22 19:28:37 UTC
