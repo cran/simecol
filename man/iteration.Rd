@@ -89,11 +89,14 @@
 
 \examples{
 data(conway)
+
+\donttest{
 ## plot after simulation:
 plot(sim(conway), delay=100)
 
 ## plot during simulation
 sim(conway, animate=TRUE, delay=100)
+}
 
 ## discrete version of logistic growth equation
 ## Note: function main returns the *new value*, not the derivative

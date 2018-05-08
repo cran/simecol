@@ -43,7 +43,7 @@ parms(lv)
 ###################################################
 ### code chunk number 6: CA (eval = FALSE)
 ###################################################
-## library("simecol")
+## #library("simecol")
 ## data(CA, package="simecol")
 ## CA <- sim(CA)
 ## plot(CA)
@@ -61,7 +61,7 @@ parms(lv)
 ###################################################
 ### code chunk number 8: lv1
 ###################################################
-library("simecol")
+#library("simecol")
 data(lv, package="simecol")
 lv1 <- lv2 <- lv
 
