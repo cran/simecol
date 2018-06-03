@@ -1,4 +1,4 @@
-fd2f2d9ed2a10ca5827b4cce3eabba32 *DESCRIPTION
+dd328f5dd87b355b8d30314a1ef61c54 *DESCRIPTION
 e7f1dabf77c24c20129c56fc5f8bf9f4 *NAMESPACE
 b8e065ecc0c11e42c920fd9faef1f5cc *R/aaa_classes.R
 dcdfcf37b1b245dd72d88302df9d0666 *R/accessors.R
@@ -23,7 +23,8 @@ ebdc21c2b9a30277a1505f80c50238c9 *R/sEdit.R
 e9ac2302312464bec9f29207e88e8645 *R/seedfill.R
 896d78634a193e0afdc17d6229355e01 *R/sim.R
 298cee7e5fb2ff9e8fd01613227eb124 *R/ssqOdeModel.R
-83badf5605980f69736db74b1fadf550 *build/vignette.rds
+b8f5876d43483dcd2e1d26eaf2a6640c *build/partial.rdb
+589ac9bb045e17ca92bfb6828073b692 *build/vignette.rds
 29b6fb5733cd215588630781b1436c64 *data/CA.rda
 666abfe50ed7248313e334567511b13b *data/chemostat.rda
 8d093a41e7b4c8bba2e3b5103d87d471 *data/conway.rda
@@ -37,12 +38,12 @@ c5e1ac25087f98c1bc357fd5ad975561 *demo/jss.R
 a0e45d853a7be1b36de0087c212c667b *inst/FAQ.txt
 fe4d9015562d60645d5bb16a10e74b86 *inst/NEWS
 5ef8cae20fab098566d2c044345bb395 *inst/THANKS
-44be005510e552181c4884a60d501337 *inst/doc/a-simecol-introduction.R
+4d340c5857e01fe5c5854fb74dadf4db *inst/doc/a-simecol-introduction.R
 99fa2a58dc14263f0cbb271593f52a14 *inst/doc/a-simecol-introduction.Rnw
-da3ef2bf7b6b8afb185cd9470e4aa7b6 *inst/doc/a-simecol-introduction.pdf
-4be63c999ed32450ba9986f87236e2c1 *inst/doc/b-simecol-howtos.R
+1d8f7f202728a6cfdda55a5291d13459 *inst/doc/a-simecol-introduction.pdf
+d3d9a96c944439cd5c71165f3eeb239a *inst/doc/b-simecol-howtos.R
 b101efdec89905934a25efc660be0098 *inst/doc/b-simecol-howtos.Rnw
-f212fb8342afa0d019155ee294b27e67 *inst/doc/b-simecol-howtos.pdf
+a4b16a26dfe05e8c6dc2b68820ea8526 *inst/doc/b-simecol-howtos.pdf
 83486c3a764fd74472c7fd81b22c82c1 *inst/doc/examples/CA.R
 892fa7f751313ae0d3c6d35533fd145a *inst/doc/examples/chemostat.R
 751963265a6ee8128dd653cd3345c148 *inst/doc/examples/competition.R
@@ -94,7 +95,7 @@ c701f7bdb286ad8bb9e9e32796864784 *man/peaks.Rd
 0c532664e48129ce60966a8b99f679b5 *man/sEdit.Rd
 789954f2a7450fff9fcf79b5039b4625 *man/seedfill.Rd
 2197ffaa539b0dd623b33d3c9399f8c1 *man/sim.Rd
-f458f95906bf890bd5ec69da12b6938a *man/simecol-package.Rd
+90e5f1e10ce7d76d48dbf4f59663ffa2 *man/simecol-package.Rd
 7ff6ad207a771c0444348d720e4d620b *man/ssqOdeModel.Rd
 03e25c81b8ebbdda2e06feaac20f8700 *man/upca.Rd
 2a02dac2941789a7184ffe7136f2fd1b *src/R_init_simecol.c
