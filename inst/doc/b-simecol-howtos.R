@@ -418,7 +418,7 @@ res$par
 
 
 ###################################################
-### code chunk number 40: b-simecol-howtos.Rnw:939-945
+### code chunk number 40: b-simecol-howtos.Rnw:940-946
 ###################################################
 res <- fitOdeModel(cs1, whichpar = whichpar,
   obstime = obstime, yobs = yobs, method = "PORT",
@@ -429,7 +429,7 @@ res$par
 
 
 ###################################################
-### code chunk number 42: b-simecol-howtos.Rnw:988-1012
+### code chunk number 42: b-simecol-howtos.Rnw:989-1013
 ###################################################
 library(FME)
 library(simecol)
@@ -458,7 +458,7 @@ Fit <- modFit(p = c(vm=10, km=10), f = Cost, simObj=cs1,
 
 
 ###################################################
-### code chunk number 43: b-simecol-howtos.Rnw:1021-1024
+### code chunk number 43: b-simecol-howtos.Rnw:1022-1025
 ###################################################
 summary(Fit)
 deviance(Fit)
@@ -466,7 +466,7 @@ coef(Fit)
 
 
 ###################################################
-### code chunk number 44: b-simecol-howtos.Rnw:1029-1032 (eval = FALSE)
+### code chunk number 44: b-simecol-howtos.Rnw:1030-1033 (eval = FALSE)
 ###################################################
 ## residuals(Fit)
 ## df.residual(Fit)
