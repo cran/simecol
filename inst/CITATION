@@ -1,8 +1,14 @@
 citHeader("To cite package 'simecol' in publications use:")
 
-citEntry(entry="Article",
-  title    = "simecol: An Object-Oriented Framework for Ecological Modeling in R",
-  author   = personList(as.person("Thomas Petzoldt"), as.person("Karsten Rinke")),
+## R package reference generated from DESCRIPTION metadata
+citation(auto = meta)
+
+## JSS article
+bibentry(
+  bibtype  = "Article",
+  title    = "simecol: An Object-Oriented Framework for Ecological Modeling in {R}",
+  author   = c(person("Thomas Petzoldt"), 
+               person("Karsten Rinke")),
   journal  = "Journal of Statistical Software",
   volume   = "22",
   number   = "9",

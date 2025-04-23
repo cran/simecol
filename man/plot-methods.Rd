@@ -44,7 +44,7 @@
     \item{x = "odeModel", \dots}{plots time series of the state
       variables where one or more \code{odeModel} objects can be supplied.
       Optional plotting parameters are possible, too. 
-      See \code{\link{plot.deSolve}} for details.}
+      See \code{\link[deSolve]{plot.deSolve}} for details.}
 
     \item{x = "gridModel", \dots}{displays a series of images for the
       simulated grid.}
