@@ -144,7 +144,7 @@ lines(inp$time, inp$s.in, col="darkgreen", lwd=2, lty="11")
 
 
 ###################################################
-### code chunk number 16: a-simecol-introduction.Rnw:821-822
+### code chunk number 16: a-simecol-introduction.Rnw:811-812
 ###################################################
 options("prompt" = " ", "continue" = " ")
 
@@ -172,7 +172,7 @@ matplot(tt, o, xlab="Time", ylab="Prey", las=1, type="l")
 
 
 ###################################################
-### code chunk number 18: a-simecol-introduction.Rnw:846-847
+### code chunk number 18: a-simecol-introduction.Rnw:836-837
 ###################################################
 options("prompt" = "R> ", "continue" = "+ ")
 

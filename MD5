@@ -1,4 +1,4 @@
-f800e26ae7259b76c1037bedb92f68fa *DESCRIPTION
+c9fe2c3e02ab68f26f53323035de0496 *DESCRIPTION
 e7f1dabf77c24c20129c56fc5f8bf9f4 *NAMESPACE
 b8e065ecc0c11e42c920fd9faef1f5cc *R/aaa_classes.R
 f1317a1c67a2af05529ad81f53378437 *R/accessors.R
@@ -23,7 +23,7 @@ c817f2861bbb3ee96be28cc2153fe6cc *R/plot.R
 dc114c180938df14e32b04d3d006164d *R/seedfill.R
 5976e34cc64f5ca3e6a3406191982f4b *R/sim.R
 6da9d1cf04ac8113d49eb70fa52521ed *R/ssqOdeModel.R
-cd3684fc810f76a24888d45b11345c8a *build/partial.rdb
+9ef17719e57ce32263a8fbbcfae69a70 *build/partial.rdb
 6a8aac98fe425f7579c7b97f4abd70f2 *build/vignette.rds
 29b6fb5733cd215588630781b1436c64 *data/CA.rda
 666abfe50ed7248313e334567511b13b *data/chemostat.rda
@@ -36,14 +36,14 @@ dde696004aa9bb419de2eade73b8e9e2 *data/lv.rda
 3e34c27e37fa376d0aa201f15394c7c4 *demo/jss.R
 72fff0327dd26e8b75f1bf277fc66cc9 *inst/CITATION
 b185d3965e3802abd62a998956c62c17 *inst/FAQ.txt
-e4df55cdda7ad64999156ac9fe7ee457 *inst/NEWS
+6f6613d6a74403e71b54e682af13f245 *inst/NEWS
 1828807efd128183b59c455704994d08 *inst/THANKS
-4d340c5857e01fe5c5854fb74dadf4db *inst/doc/a-simecol-introduction.R
-14eb3b0cc9c380a0f6d3db40956c023c *inst/doc/a-simecol-introduction.Rnw
-e78037ae3b7d06a28fe9fb5e0ebfbae3 *inst/doc/a-simecol-introduction.pdf
+f4eb66faf89b1c69f64ca67ee571ea71 *inst/doc/a-simecol-introduction.R
+917882a9065c2a98670fbf1b78fc39af *inst/doc/a-simecol-introduction.Rnw
+36b15030882ce24e066dd0cac0ea999f *inst/doc/a-simecol-introduction.pdf
 b502c90902f7b761b70773f1eb7243a6 *inst/doc/b-simecol-howtos.R
-c0161e67b87234eea4e0adbf5d19a0ff *inst/doc/b-simecol-howtos.Rnw
-3bda7081d674f57ae6026f51a8101391 *inst/doc/b-simecol-howtos.pdf
+447bbacb38db3ea4d9dbcc90f36e80b9 *inst/doc/b-simecol-howtos.Rnw
+a8dca7a3bdbfee1c085ebea03f7e1764 *inst/doc/b-simecol-howtos.pdf
 83486c3a764fd74472c7fd81b22c82c1 *inst/doc/examples/CA.R
 892fa7f751313ae0d3c6d35533fd145a *inst/doc/examples/chemostat.R
 751963265a6ee8128dd653cd3345c148 *inst/doc/examples/competition.R
@@ -73,7 +73,7 @@ fd9da55845c5d40fdebf3c26b1010362 *man/chemostat.Rd
 c9f4484fe20551b11fb732879652023d *man/diffusion.Rd
 5457c685ad2f98285b5414b5b089515c *man/editParms.Rd
 5751971f5684aff130f69ce71e5d4583 *man/eightneighbours.Rd
-c209ff243256aae94516903a806f12b4 *man/fitOdeModel.Rd
+ff8e9a1c51942cbd9f363e109e1ce83e *man/fitOdeModel.Rd
 3b1ff9d16a135996d0835a09d1cdb1c1 *man/fromtoby.Rd
 1fa53d2278628fc4f5ebf8a659907019 *man/initialize-methods.Rd
 6e8f6bba35fb27b84ae9d543e67ab5e3 *man/iteration.Rd
@@ -100,8 +100,8 @@ d1e89494dd9cad4bd452bfc32be855c7 *man/simecol-package.Rd
 480a8e99c749436fa83e4a81eee2d175 *man/upca.Rd
 2a02dac2941789a7184ffe7136f2fd1b *src/R_init_simecol.c
 00e4ba34ac563c275f4a1e94b5567100 *src/simecol.c
-14eb3b0cc9c380a0f6d3db40956c023c *vignettes/a-simecol-introduction.Rnw
-c0161e67b87234eea4e0adbf5d19a0ff *vignettes/b-simecol-howtos.Rnw
+917882a9065c2a98670fbf1b78fc39af *vignettes/a-simecol-introduction.Rnw
+447bbacb38db3ea4d9dbcc90f36e80b9 *vignettes/b-simecol-howtos.Rnw
 686accaa04554feffe53df74eb20b150 *vignettes/ca.pdf
 c6f3372e18710befc0fe7a9a52f634f2 *vignettes/classes.pdf
 9f6cd01a21ca92371c46ad50a2f48e3e *vignettes/ibm_daphnia.R

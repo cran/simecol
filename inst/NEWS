@@ -1,3 +1,6 @@
+0.9-1
+o removed unnecessary ROR ID
+
 0.9-0
 o moved from R-Forge to Github
 o add package anchor for print.deSolve in Rd file

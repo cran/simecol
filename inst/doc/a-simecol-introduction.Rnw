@@ -11,7 +11,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% declarations for jss.cls %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% almost as usual
@@ -52,17 +52,7 @@ Please refer to the original publication when citing this work.
   object-oriented programming (OOP), code-sharing, \proglang{R}}
 \Plainkeywords{ecological modeling, individual-based model,
   object-orientated programming (OOP), code-sharing, R} %% without formatting
-%% at least one keyword must be supplied
 
-%% publication information
-%% NOTE: This needs to filled out ONLY IF THE PAPER WAS ACCEPTED.
-%% If it was not (yet) accepted, leave them commented.
-%% \Volume{13}
-%% \Issue{9}
-%% \Month{September}
-%% \Year{2004}
-%% \Submitdate{2004-09-29}
-%% \Acceptdate{2004-09-29}
 
 %% The address of (at least) one author should be given
 %% in the following format:
